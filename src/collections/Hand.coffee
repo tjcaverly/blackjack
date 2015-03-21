@@ -29,14 +29,15 @@ class window.Hand extends Backbone.Collection
 
   checkForOver: =>
     score = @scores()[0]
-    if score > 21
-      # @get('dealerHand').showHand()
-      @trigger('handLose')
+    score > 21
+
 
   dealerPlay: ->
     @showHand()
     while @scores()[0] < 17
-      # debugger
       @hit()
 
-    @checkForOver()
+    if @checkForOver()
+      @trigger 'handLose'
+    else
+      @trigger 'determineWinner'

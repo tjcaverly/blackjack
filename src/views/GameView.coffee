@@ -15,9 +15,11 @@ class window.GameView extends Backbone.View
     @model.on 'playerWin', => @playHandWin()
 
   playerHandLoss: ->
+    @model.set 'gameOver', true
     alert "YOU LOSE"
 
   playHandWin: ->
+    @model.set 'gameOver', true
     alert "YOU WIN"
 
   render: ->
