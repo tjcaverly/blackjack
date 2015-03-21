@@ -16,24 +16,28 @@ class window.GameView extends Backbone.View
   initialize: ->
     @render()
     @model.on 'playerLose', => @playerHandLoss()
-    @model.on 'playerWin', => @playHandWin()
+    @model.on 'playerWin', => @playerHandWin()
     @model.on 'playerTie', => @playerTie()
 
   playerHandLoss: ->
     @model.set 'gameOver', true
-    alert "YOU LOSE"
+    @endAlert("YOU LOSE")
+    # alert "YOU LOSE"
 
-  playHandWin: ->
+  playerHandWin: ->
     @model.set 'gameOver', true
-    alert "YOU WIN"
+    @endAlert("YOU WIN")
 
   playerTie: ->
     @model.set 'gameOver', true
-    alert "TIE GAME"
+    @endAlert("TIE GAME")
 
   render: ->
     @$el.children().detach()
     @$el.html @template()
     @$('.player-hand-container').html new HandView(collection: @model.get 'playerHand').el
     @$('.dealer-hand-container').html new HandView(collection: @model.get 'dealerHand').el
+
+  endAlert: (message) ->
+    setTimeout((-> alert message), 50)
 

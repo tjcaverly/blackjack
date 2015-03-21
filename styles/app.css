@@ -5,10 +5,19 @@
   border-radius: 5px;
   height: 140px;
   margin-right: 20px;
+  background-size: cover;
 }
 
-.covered {
+.cardContainer {
   background-color: black;
+  width: 100px;
+  height: 142px;
+  border-radius: 5px;
+  float: left;
+}
+
+.covered .card{
+  opacity: 0;
 }
 
 .hand {

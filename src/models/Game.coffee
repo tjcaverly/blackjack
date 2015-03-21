@@ -8,13 +8,9 @@ class window.Game extends Backbone.Model
     @set 'dealerHand', deck.dealDealer()
 
     @get('dealerHand').on 'determineWinner', => 
-      #debugger
-      debugger
-      console.log(@);
-      console.log(@get('dealerHand'))
-      if @get('dealerHand').scores()[0] > @get('playerHand').scores()[0]
+      if @get('dealerHand').score() > @get('playerHand').score()
         @trigger 'playerLose'
-      else if @get('dealerHand').scores()[0] < @get('playerHand').scores()[0]
+      else if @get('dealerHand').score() < @get('playerHand').score()
         @trigger 'playerWin'
       else
         @trigger 'playerTie'
@@ -30,6 +26,3 @@ class window.Game extends Backbone.Model
 
     @get('dealerHand').on 'handLose', => 
       @trigger 'playerWin'
-
-
-
