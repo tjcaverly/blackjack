@@ -1,25 +1,34 @@
+body {
+  background-color: green;
+}
+
 .card {
   float: left;
-  border: solid 1px black;
   width: 100px;
-  border-radius: 5px;
   height: 140px;
   margin-right: 20px;
   background-size: cover;
 }
 
 .cardContainer {
-  background-color: black;
-  width: 100px;
-  height: 142px;
+  border: solid 1px black;
   border-radius: 5px;
+  width: 100px;
+  height: 140px;
   float: left;
+
 }
 
 .covered .card{
   opacity: 0;
 }
 
+.covered {
+  background-image: url('../img/card-back.png');
+  background-size: cover;
+}
+
 .hand {
   overflow: auto;
 }
+
