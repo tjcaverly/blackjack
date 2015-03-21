@@ -6,13 +6,18 @@ class window.GameView extends Backbone.View
   '
 
   events:
-    'click .hit-button': -> @model.get('playerHand').hit()
-    'click .stand-button': -> @model.get('playerHand').stand()
+    'click .hit-button': -> 
+      if not @model.get('gameOver')
+        @model.get('playerHand').hit()
+    'click .stand-button': -> 
+      if not @model.get('gameOver')
+        @model.get('playerHand').stand()
 
   initialize: ->
     @render()
     @model.on 'playerLose', => @playerHandLoss()
     @model.on 'playerWin', => @playHandWin()
+    @model.on 'playerTie', => @playerTie()
 
   playerHandLoss: ->
     @model.set 'gameOver', true
@@ -21,6 +26,10 @@ class window.GameView extends Backbone.View
   playHandWin: ->
     @model.set 'gameOver', true
     alert "YOU WIN"
+
+  playerTie: ->
+    @model.set 'gameOver', true
+    alert "TIE GAME"
 
   render: ->
     @$el.children().detach()

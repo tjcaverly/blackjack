@@ -6,13 +6,15 @@ class window.Game extends Backbone.Model
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
-    console.log @get('playerHand')
 
     @get('dealerHand').on 'determineWinner', => 
-      # debugger
-      if (@get 'dealerHand').scores[0] > (@get 'playerHand').scores[0]
+      #debugger
+      debugger
+      console.log(@);
+      console.log(@get('dealerHand'))
+      if @get('dealerHand').scores()[0] > @get('playerHand').scores()[0]
         @trigger 'playerLose'
-      else if (@get 'dealerHand').scores[0] < (@get 'playerHand').scores[0]
+      else if @get('dealerHand').scores()[0] < @get('playerHand').scores()[0]
         @trigger 'playerWin'
       else
         @trigger 'playerTie'
