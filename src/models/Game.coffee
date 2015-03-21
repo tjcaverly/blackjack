@@ -2,7 +2,7 @@
 class window.Game extends Backbone.Model
 
   initialize: ->
-    @set 'gameOver' , false
+    @set 'gameOver', false
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
@@ -20,7 +20,9 @@ class window.Game extends Backbone.Model
       if @get('playerHand').checkForOver()
         @trigger 'playerLose'
 
-    @get('playerHand').on 'stand', => @get('dealerHand').dealerPlay()
+    @get('playerHand').on 'stand', =>
+      @set 'gameOver', true 
+      @get('dealerHand').dealerPlay()
     @get('playerHand').on 'handLose', => 
       @trigger 'playerLose'
 

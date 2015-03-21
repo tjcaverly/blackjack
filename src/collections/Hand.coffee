@@ -7,7 +7,6 @@ class window.Hand extends Backbone.Collection
     @add(@deck.pop())
     @trigger 'hit'
 
-
   stand: ->
     @trigger 'stand'
 
@@ -36,11 +35,21 @@ class window.Hand extends Backbone.Collection
 
 
   dealerPlay: ->
-    @showHand()
-    while @score() < 17
-      @hit()
 
-    if @checkForOver()
-      @trigger 'handLose'
+    delayedPlay = => 
+      if @score() < 17
+        @hit()
+
+      if @score() < 17
+        setTimeout(delayedPlay, 1000)
+      else
+        if @checkForOver()
+          @trigger 'handLose'
+        else
+          @trigger 'determineWinner' 
+      
+    @showHand()
+    if @score() < 17
+      setTimeout(delayedPlay, 1000)
     else
-      @trigger 'determineWinner'
+      delayedPlay()
