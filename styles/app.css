@@ -1,5 +1,13 @@
 body {
   background-color: green;
+  font-family: Helvetica, sans-serif;
+  font-size: 20px;
+  /*font-weight: bold;*/
+}
+
+button {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .card {

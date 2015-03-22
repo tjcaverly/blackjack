@@ -22,7 +22,6 @@ class window.GameView extends Backbone.View
   playerHandLoss: ->
     @model.set 'gameOver', true
     @endAlert("YOU LOSE")
-    # alert "YOU LOSE"
 
   playerHandWin: ->
     @model.set 'gameOver', true
